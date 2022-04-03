@@ -1,0 +1,11 @@
+.show_idBTN {
+    cursor: pointer;
+    background: #f0f2f5 !important;
+    color: #5181b8 !important;
+    font-size: 14px;
+    font-weight: 500;
+    width: max-content;
+    padding: 0 5px;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}

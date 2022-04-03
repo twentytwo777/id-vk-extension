@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "VK-ID Extension",
+    "description": "Gets the user's VK ID",
+    "version": "1",
+    "permissions": [],
+    "developer": {
+        "name": "twenty two",
+        "url": "https://github.com/twentytwo777"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.vk.com/*"
+            ],
+            "js": [
+                "./assets/js/script.js"
+            ],
+            "css": [
+                "./assets/css/style.css"
+            ]
+        }
+    ],
+    "icons": { 
+        "16": "./assets/icons/icon16.png",
+        "48": "./assets/icons/icon48.png",
+       "128": "./assets/icons/icon128.png" 
+    }
+}
