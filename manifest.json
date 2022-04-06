@@ -14,7 +14,8 @@
                 "*://*.vk.com/*"
             ],
             "js": [
-                "./assets/js/script.js"
+                "./assets/js/script.js",
+                "./assets/js/public/fas.min.js"
             ],
             "css": [
                 "./assets/css/style.css"
