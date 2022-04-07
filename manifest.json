@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "VK-ID Extension",
     "description": "Gets the user's VK ID",
-    "version": "1.2",
+    "version": "1.3",
     "permissions": [],
     "content_scripts": [
         {
