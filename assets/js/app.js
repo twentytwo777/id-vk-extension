@@ -33,4 +33,4 @@ const _App = new App;
 setInterval(_ => {
     const showID = document.querySelector('.show_idBTN');
     !showID ? _App.Render() : _App.eventListeners();
-}, 1000);
+});
