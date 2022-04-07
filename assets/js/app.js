@@ -6,19 +6,21 @@ class App {
 
     eventListeners() {
         const showID = document.querySelector('.show_idBTN');
-        (async _ => {
-            const _fac = chrome.runtime.getURL('../assets/js/background/facInit.js');
-            await import(_fac).then(Fac => {
-                const fac = new Fac.fac, _style = getComputedStyle(document.body).backgroundColor;      
-                fac.isDark(_style) ? showID.classList.add('dark') : showID.classList.remove('dark');
-            });
-
-            const getID = chrome.runtime.getURL('../assets/js/background/requests/getID.js');
-            await import(getID).then(vkID => {
-                const classvkID = new vkID.getID, id = location.pathname.replace(/[\\\/]/g, '');
-                showID ? showID.onclick = _ => classvkID.request(id) : false; 
-            });
-        })();
+        if (showID) {
+            (async _ => {
+                const _fac = chrome.runtime.getURL('../assets/js/background/facInit.js');
+                await import(_fac).then(Fac => {
+                    const fac = new Fac.fac, _style = getComputedStyle(document.body).backgroundColor;      
+                    fac.isDark(_style) ? showID.classList.add('dark') : showID.classList.remove('dark');
+                });
+    
+                const getID = chrome.runtime.getURL('../assets/js/background/requests/getID.js');
+                await import(getID).then(vkID => {
+                    const classvkID = new vkID.getID, id = location.pathname.replace(/[\\\/]/g, '');
+                    showID ? showID.onclick = _ => classvkID.request(id) : false; 
+                });
+            })();
+        };
     };
 
     Render() {
