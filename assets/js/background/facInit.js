@@ -1,9 +1,6 @@
 class fac {
     constructor() {
-        this.r;
-        this.g;
-        this.b;
-        this.hsp;
+        this.r, this.g, this.b, this.hsp;
     }
 
     isDark(color) {
