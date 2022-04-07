@@ -9,3 +9,7 @@
     -webkit-user-select: none !important;
     user-select: none !important;
 }
+.show_idBTN.dark {
+    background: #444446 !important;
+    color: #fff !important;
+}

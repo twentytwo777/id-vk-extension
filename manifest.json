@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "VK-ID Extension",
     "description": "Gets the user's VK ID",
-    "version": "1",
+    "version": "1.2",
     "permissions": [],
     "developer": {
         "name": "twenty two",
@@ -14,8 +14,7 @@
                 "*://*.vk.com/*"
             ],
             "js": [
-                "./assets/js/script.js",
-                "./assets/js/public/fas.min.js"
+                "./assets/js/app.js"
             ],
             "css": [
                 "./assets/css/style.css"
@@ -26,5 +25,12 @@
         "16": "./assets/icons/icon16.png",
         "48": "./assets/icons/icon48.png",
        "128": "./assets/icons/icon128.png" 
-    }
+    },
+    "background": {
+        "page": "background.html"
+    },
+    "web_accessible_resources": [
+        "assets/js/background/facInit.js",
+        "assets/js/background/requests/getID.js"
+    ]    
 }
