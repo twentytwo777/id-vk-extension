@@ -24,7 +24,6 @@ class App {
 
     Render() {
         const page_name = document.querySelector('.wide_column .page_top .page_name'), html = `<div class="show_idBTN">Show ID</div>`;
-
         page_name ? page_name.insertAdjacentHTML('beforeend', html) : false;
     };
 };
