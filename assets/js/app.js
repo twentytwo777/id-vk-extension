@@ -10,8 +10,8 @@ class App {
             const _fac = chrome.runtime.getURL('../assets/js/background/facInit.js'),
                 getID = chrome.runtime.getURL('../assets/js/background/requests/getID.js');
             
-            await import(_fac).then(Fac => {
-                const fac = new Fac.fac, _style = getComputedStyle(document.body).backgroundColor;      
+            await import(_fac).then(_Fac => {
+                const fac = new _Fac.fac, _style = getComputedStyle(document.body).backgroundColor;      
                 fac.isDark(_style) ? showID.classList.add('dark') : showID.classList.remove('dark');
             });
             
