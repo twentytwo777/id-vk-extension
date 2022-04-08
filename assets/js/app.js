@@ -1,5 +1,9 @@
 class App {
     constructor() {
+        this.init();
+    };
+
+    init() {
         this.Render();
         this.eventListeners();
     };
@@ -34,16 +38,17 @@ class App {
                     }
                 }).then(data => data.default.buttonText[0].Main)
             }</div>`;
-        page_name ? page_name.insertAdjacentHTML('beforeend', html) : false;
+
+        if (page_name && !document.querySelector('.show_idBTN')) {
+            page_name.insertAdjacentHTML('afterend', html);
+        };
     };
 };
 
 const _App = new App,
-    checking = _ => {
-        setInterval(_ => {
-            const showID = document.querySelector('.show_idBTN');
-            !showID ? _App.Render() : _App.eventListeners();
-        });
-    };
-// fucking vk uses ajax request, but not redirects, bastards...
-window.onload = checking;
+    observerApp = new MutationObserver(_App.init.bind(_App));
+
+observerApp.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+});
