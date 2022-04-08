@@ -1,6 +1,19 @@
-# id-vk-extension
+# VK-ID
+![buttonID-White](https://i.imgur.com/lkKZnRp.png)
+![buttonID-Black](https://i.imgur.com/DFW5Gsk.png)
+
 Shows the user ID of the social network VK.
 
-### After installation, on the main page and other pages of users, a Show ID button will appear under their name block
+## How to install?
+- Download this repository
+- Upload him to your extenstions
+- Open website [\vk.com\](https://vk.com) 
+- Go to any user page
 
-![alt tag](https://i.imgur.com/iOaszGS.jpg "shows")
+## Peculiarities
+- Easy to install
+- Open source code
+- Adaptation to the dark theme of the site
+
+## [License](LICENSE)
+MIT License
