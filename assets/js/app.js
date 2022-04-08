@@ -5,32 +5,45 @@ class App {
     };
 
     async eventListeners() {
-        const showID = document.querySelector('.show_idBTN');
-        if (showID) {
-            const _fac = chrome.runtime.getURL('../assets/js/background/facInit.js'),
-                getID = chrome.runtime.getURL('../assets/js/background/requests/getID.js');
+        const elemButton = document.querySelector('.show_idBTN');
+        if (elemButton) {            
+            await import(chrome.runtime.getURL('../assets/js/background/facInit.js'))
+                .then(_Fac => {
+                    const fac = new _Fac.fac, 
+                        _style = getComputedStyle(document.body).backgroundColor;   
+
+                    fac.isDark(_style) ? elemButton.classList.add('dark') : elemButton.classList.remove('dark');
+                });
             
-            await import(_fac).then(_Fac => {
-                const fac = new _Fac.fac, _style = getComputedStyle(document.body).backgroundColor;      
-                fac.isDark(_style) ? showID.classList.add('dark') : showID.classList.remove('dark');
-            });
-            
-            await import(getID).then(vkID => {
-                const classvkID = new vkID.getID, id = location.pathname.replace(/[\\\/]/g, '');
-                showID ? showID.onclick = _ => classvkID.request(id) : false; 
-            });
+            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js'))
+                .then(vkID => {
+                    const classvkID = new vkID.getID, 
+                        id = location.pathname.replace(/[\\\/]/g, '');
+
+                    elemButton ? elemButton.onclick = _ => classvkID.request(id) : false; 
+                });
         };
     };
 
-    Render() {
-        const page_name = document.querySelector('.wide_column .page_top .page_name'), html = `<div class="show_idBTN">Show ID</div>`;
+    async Render() {
+        const page_name = document.querySelector('.wide_column .page_top .page_name'), 
+            html = `<div class="show_idBTN">${
+                await import(chrome.runtime.getURL('../../answer.json'), {
+                    assert: {
+                        type: "json"
+                    }
+                }).then(data => data.default.buttonText[0].Main)
+            }</div>`;
         page_name ? page_name.insertAdjacentHTML('beforeend', html) : false;
     };
 };
 
-const _App = new App;
+const _App = new App,
+    checking = _ => {
+        setInterval(_ => {
+            const showID = document.querySelector('.show_idBTN');
+            !showID ? _App.Render() : _App.eventListeners();
+        });
+    };
 // fucking vk uses ajax request, but not redirects, bastards...
-setInterval(_ => {
-    const showID = document.querySelector('.show_idBTN');
-    !showID ? _App.Render() : _App.eventListeners();
-});
+window.onload = checking;

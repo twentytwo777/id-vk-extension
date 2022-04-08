@@ -8,7 +8,8 @@
         {
             "matches": ["*://*.vk.com/*"],
             "js": ["./assets/js/app.js"],
-            "css": ["./assets/css/style.css"]
+            "css": ["./assets/css/style.css"],
+            "json": ["answer.json"]
         }
     ],
     "icons": { 
@@ -21,6 +22,7 @@
     },
     "web_accessible_resources": [
         "assets/js/background/facInit.js",
-        "assets/js/background/requests/getID.js"
+        "assets/js/background/requests/getID.js",
+        "answer.json"
     ]    
 }

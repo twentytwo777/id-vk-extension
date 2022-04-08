@@ -10,6 +10,9 @@
     -webkit-user-select: none !important;
     user-select: none !important;
 }
+.show_idBTN:hover {
+    background: rgba(174, 183, 194, 0.12) !important;
+}
 .show_idBTN.dark {
     background: #444446 !important;
     color: #999 !important;
