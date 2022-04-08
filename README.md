@@ -7,7 +7,7 @@ Shows the user ID of the social network VK.
 ## How to install?
 - Download this repository
 - Upload him to your extenstions
-- Open website [\vk.com\](https://vk.com) 
+- Open website [\*vk.com\*](https://vk.com) 
 - Go to any user page
 
 ## Peculiarities
