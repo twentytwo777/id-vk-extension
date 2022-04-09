@@ -10,22 +10,20 @@ class App {
 
     async eventListeners() {
         const elemButton = document.querySelector('.show_idBTN');
-        if (elemButton) {            
-            await import(chrome.runtime.getURL('../assets/js/background/facInit.js'))
-                .then(_Fac => {
-                    const fac = new _Fac.fac, 
-                        _style = getComputedStyle(document.body).backgroundColor;   
+        if (elemButton) {
+            await import(chrome.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
+                const fac = new _Fac.fac, 
+                    _style = getComputedStyle(document.body).backgroundColor;   
 
-                    fac.isDark(_style) ? elemButton.classList.add('dark') : elemButton.classList.remove('dark');
-                });
+                fac.isDark(_style) ? elemButton.classList.add('dark') : elemButton.classList.remove('dark');
+            });
             
-            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js'))
-                .then(vkID => {
-                    const classvkID = new vkID.getID, 
-                        id = location.pathname.replace(/[\\\/]/g, '');
+            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
+                const classvkID = new vkID.getID, 
+                    id = location.pathname.replace(/[\\\/]/g, '');
 
-                    elemButton ? elemButton.onclick = _ => classvkID.request(id) : false; 
-                });
+                elemButton ? elemButton.onclick = classvkID.request.bind(classvkID, id) : false; 
+            });
         };
     };
 
