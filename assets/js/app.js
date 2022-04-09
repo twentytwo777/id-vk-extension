@@ -22,7 +22,7 @@ class App {
                 const classvkID = new vkID.getID, 
                     id = location.pathname.replace(/[\\\/]/g, '');
 
-                elemButton ? elemButton.onclick = classvkID.request.bind(classvkID, id) : false; 
+                elemButton ? elemButton.onclick = classvkID.request.bind(classvkID, id, elemButton) : false; 
             });
         };
     };
@@ -30,7 +30,7 @@ class App {
     async Render() {
         const page_name = document.querySelector('#profile .wide_column .page_top .page_name'), 
             html = `<div class="show_idBTN">${
-                await import(chrome.runtime.getURL('../../answer.json'), {
+                await import(chrome.runtime.getURL('answer.json'), {
                     assert: {
                         type: "json"
                     }

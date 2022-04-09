@@ -17,3 +17,8 @@
     background: #444446 !important;
     color: #999 !important;
 }
+.show_idBTN.clicked {
+    pointer-events: none !important; 
+    user-select: all !important; 
+    -webkit-user-select: all !important;
+}
