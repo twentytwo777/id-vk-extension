@@ -8,7 +8,7 @@ Supported browsers: Chrome
 ## How to install?
 - Download this repository
 - Upload it to your extenstions
-- Open website [\*vk.com\*](https://vk.com) 
+- Open website [vk.com](https://vk.com) 
 - Go to any user page
 
 ## Peculiarities
