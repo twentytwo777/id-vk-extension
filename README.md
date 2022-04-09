@@ -3,6 +3,7 @@
 ![buttonID-Black](https://i.imgur.com/DFW5Gsk.png)
 
 Shows the user ID of the social network VK.
+Supported browsers: Chrome
 
 ## How to install?
 - Download this repository
