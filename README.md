@@ -2,7 +2,7 @@
 ![buttonID-White](https://i.imgur.com/lkKZnRp.png)
 ![buttonID-Black](https://i.imgur.com/DFW5Gsk.png)
 
-Shows the user ID of the social network VK.
+## Shows the user ID of the social network VK.
 Supported browsers: Chrome
 
 ## How to install?
