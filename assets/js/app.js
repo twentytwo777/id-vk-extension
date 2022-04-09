@@ -28,7 +28,7 @@ class App {
     };
 
     async Render() {
-        const page_name = document.querySelector('.wide_column .page_top .page_name'), 
+        const page_name = document.querySelector('#profile .wide_column .page_top .page_name'), 
             html = `<div class="show_idBTN">${
                 await import(chrome.runtime.getURL('../../answer.json'), {
                     assert: {
