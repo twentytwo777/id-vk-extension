@@ -13,9 +13,14 @@ class App {
         if (elemButton) {
             await import(chrome.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
                 const fac = new _Fac.fac, 
-                    _style = getComputedStyle(document.body).backgroundColor;   
-
-                fac.isDark(_style) ? elemButton.classList.add('dark') : elemButton.classList.remove('dark');
+                    _style = getComputedStyle(document.body);
+                    
+                if (fac.isDark(_style.backgroundColor)) {
+                    elemButton.classList.add('dark');
+                    document.documentElement.style.cssText = `--isDark_bg: ${_style.backgroundColor}; --isDark_color: ${_style.color};`;
+                } else {
+                    elemButton.classList.remove('dark')
+                };
             });
             
             await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
