@@ -11,10 +11,10 @@ class App {
     async eventListeners() {
         const elemButton = document.querySelector('.show_idBTN');
         if (elemButton) {
-            await import(chrome.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
+            await import(browser.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
                 const fac = new _Fac.fac, 
                     _style = getComputedStyle(document.body);
-                    
+
                 if (fac.isDark(_style.backgroundColor)) {
                     elemButton.classList.add('dark');
                     document.documentElement.style.cssText = `--isDark_bg: ${_style.backgroundColor}; --isDark_color: ${_style.color};`;
@@ -23,7 +23,7 @@ class App {
                 };
             });
             
-            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
+            await import(browser.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
                 const classvkID = new vkID.getID, 
                     id = location.pathname.replace(/[\\\/]/g, '');
 
