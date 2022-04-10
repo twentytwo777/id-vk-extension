@@ -14,7 +14,7 @@ Supported browsers: Chrome
 ## Peculiarities
 - Easy to install
 - Open source code
-- Adaptation to the dark theme of the site
+- Adaptation to the dark theme of the website
 
 ## [License](LICENSE)
 MIT License
