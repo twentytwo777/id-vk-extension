@@ -11,7 +11,7 @@ class App {
     async eventListeners() {
         const elemButton = document.querySelector('.show_idBTN');
         if (elemButton) {
-            await import(browser.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
+            await import(chrome.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
                 const fac = new _Fac.fac, 
                     _style = getComputedStyle(document.body);
 
@@ -23,7 +23,7 @@ class App {
                 };
             });
             
-            await import(browser.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
+            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
                 const classvkID = new vkID.getID, 
                     id = location.pathname.replace(/[\\\/]/g, '');
 
