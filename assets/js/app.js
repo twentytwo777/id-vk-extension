@@ -33,7 +33,8 @@ class App {
     };
 
     async Render() {
-        const page_name = document.querySelector('#profile .wide_column .page_top .page_name'), 
+        const pageNameDesktop = document.querySelector('#profile .wide_column .page_top .page_name'), 
+            pageNameMobile = document.querySelector('.BasisProfile .owner_panel .pp_cont .op_header'),
             html = `<div class="show_idBTN">${
                 await import(chrome.runtime.getURL('answer.json'), {
                     assert: {
@@ -42,9 +43,8 @@ class App {
                 }).then(data => data.default.buttonText[0].Main)
             }</div>`;
 
-        if (page_name && !document.querySelector('.show_idBTN')) {
-            page_name.insertAdjacentHTML('afterend', html);
-        };
+        pageNameDesktop ? pageNameDesktop.insertAdjacentHTML('afterend', html) : false;
+        pageNameMobile ? pageNameMobile.insertAdjacentHTML('afterend', html) : false;
     };
 };
 

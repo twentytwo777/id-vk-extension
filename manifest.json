@@ -6,7 +6,10 @@
     "permissions": [],
     "content_scripts": [
         {
-            "matches": ["*://*.vk.com/*"],
+            "matches": [
+                "*://*.vk.com/*",
+                "*://*.m.vk.com/*"
+            ],
             "js": ["./assets/js/app.js"],
             "css": ["./assets/css/style.css"]
         }
