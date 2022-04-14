@@ -43,8 +43,8 @@ class App {
                 }).then(data => data.default.buttonText[0].Main)
             }</div>`;
 
-        pageNameDesktop ? pageNameDesktop.insertAdjacentHTML('afterend', html) : false;
-        pageNameMobile ? pageNameMobile.insertAdjacentHTML('afterend', html) : false;
+        pageNameDesktop && !document.querySelector('.show_idBTN') ? pageNameDesktop.insertAdjacentHTML('afterend', html) : false;
+        pageNameMobile && !document.querySelector('.show_idBTN') ? pageNameMobile.insertAdjacentHTML('afterend', html) : false;
     };
 };
 
