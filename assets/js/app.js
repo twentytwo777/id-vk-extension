@@ -4,7 +4,7 @@ class App {
     };
 
     async init() {
-        window.onload = await this.Render.bind(this);
+        await this.Render();
 
         this.buttonID = document.querySelector('.buttonID');
         this.buttonID ? this.eventListeners() : false;
