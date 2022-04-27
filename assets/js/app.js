@@ -5,53 +5,43 @@ class App {
 
     init() {
         this.Render();
-        this.eventListeners();
+
+        this.buttonID = document.querySelector('.buttonID');
+        this.buttonID ? this.eventListeners() : false;
     };
 
     async eventListeners() {
-        const elemButton = document.querySelector('.show_idBTN');
-        if (elemButton) {
-            await import(chrome.runtime.getURL('../assets/js/background/facInit.js')).then(_Fac => {
-                const fac = new _Fac.fac, 
-                    _style = getComputedStyle(document.body);
+        await import(chrome.runtime.getURL('assets/js/background/modules/colorDeterminant.js')).then(determinant => {
+            const colorDeterminant = new determinant.colorDeterminant, style = getComputedStyle(document.body);
 
-                if (fac.isDark(_style.backgroundColor)) {
-                    elemButton.classList.add('dark');
-                    document.documentElement.style.cssText = `--isDark_bg: ${_style.backgroundColor}; --isDark_color: ${_style.color};`;
-                } else {
-                    elemButton.classList.remove('dark')
-                };
-            });
+            document.documentElement.style.cssText = `--darkBackground: ${style.backgroundColor}; --darkColor: ${style.color};`;
+            colorDeterminant.isDark(style.backgroundColor) ? this.buttonID.classList.add('dark') : this.buttonID.classList.remove('dark');
+        });
+        
+        await import(chrome.runtime.getURL('assets/js/background/vk/vkUser.js')).then(vk => {
+            const vkUser = new vk.vkUser, id = location.pathname.replace(/[\\\/]/g, '');
             
-            await import(chrome.runtime.getURL('../assets/js/background/requests/getID.js')).then(vkID => {
-                const classvkID = new vkID.getID, 
-                    id = location.pathname.replace(/[\\\/]/g, '');
-
-                elemButton ? elemButton.onclick = classvkID.request.bind(classvkID, id, elemButton) : false; 
-            });
-        };
+            this.buttonID ? this.buttonID.onclick = vkUser.requestID.bind(vkUser, id, this.buttonID) : false; 
+        });
     };
 
     async Render() {
-        const pageNameDesktop = document.querySelector('#profile .wide_column .page_top .page_name'), 
-            pageNameMobile = document.querySelector('.BasisProfile .owner_panel .pp_cont .op_header'),
-            html = `<div class="show_idBTN">${
+        const pageDesktop = document.querySelector('#profile .wide_column .page_top .page_name'), 
+            pageMobile = document.querySelector('.BasisProfile .owner_panel .pp_cont .op_header'),
+            html = `<div class="buttonID">${
                 await import(chrome.runtime.getURL('answer.json'), {
-                    assert: {
-                        type: "json"
-                    }
+                    assert: {type: "json"}
                 }).then(data => data.default.buttonText[0].Main)
-            }</div>`;
+            }</div>`,
+            buttonID = document.querySelector('.buttonID');
 
-        pageNameDesktop && !document.querySelector('.show_idBTN') ? pageNameDesktop.insertAdjacentHTML('afterend', html) : false;
-        pageNameMobile && !document.querySelector('.show_idBTN') ? pageNameMobile.insertAdjacentHTML('afterend', html) : false;
+        pageDesktop && !buttonID ? pageDesktop.insertAdjacentHTML('afterend', html) : false;
+        pageMobile && !buttonID ? pageMobile.insertAdjacentHTML('afterend', html) : false;
     };
 };
 
-const _App = new App,
-    observerApp = new MutationObserver(_App.init.bind(_App));
-
+const app = new App, observerApp = new MutationObserver(app.init.bind(app));
 observerApp.observe(document.documentElement, {
     childList: true,
-    subtree: true,
+    subtree: true
 });

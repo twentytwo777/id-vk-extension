@@ -1,22 +1,24 @@
-.show_idBTN {
+.buttonID {
     cursor: pointer;
-    background: #f0f2f5 !important;
-    color: #5181b8 !important;
+    background: #f0f2f5;
+    color: #5181b8;
     border-radius: 4px;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     width: max-content;
     padding: 5px;
     margin: 5px 0;
     -webkit-user-select: none !important;
     user-select: none !important;
 }
-.show_idBTN.dark {
-    background: var(--isDark_bg) !important;
-    color: var(--isDark_color) !important;
+
+.buttonID.dark {
+    background: var(--darkBackground);
+    color: var(--darkColor);
 }
-.show_idBTN.clicked {
-    pointer-events: none !important; 
+
+.buttonID.clicked {
+    pointer-events: none;
     user-select: all !important; 
     -webkit-user-select: all !important;
 }
