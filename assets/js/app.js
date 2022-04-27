@@ -3,8 +3,8 @@ class App {
         this.init();
     };
 
-    init() {
-        this.Render();
+    async init() {
+        window.onload = await this.Render.bind(this);
 
         this.buttonID = document.querySelector('.buttonID');
         this.buttonID ? this.eventListeners() : false;
@@ -20,8 +20,7 @@ class App {
         
         await import(chrome.runtime.getURL('assets/js/background/vk/vkUser.js')).then(vk => {
             const vkUser = new vk.vkUser, id = location.pathname.replace(/[\\\/]/g, '');
-            
-            this.buttonID ? this.buttonID.onclick = vkUser.requestID.bind(vkUser, id, this.buttonID) : false; 
+            this.buttonID.onclick = vkUser.requestID.bind(vkUser, id, this.buttonID); 
         });
     };
 
@@ -40,7 +39,7 @@ class App {
     };
 };
 
-const app = new App, observerApp = new MutationObserver(app.init.bind(app));
+const app = new App(), observerApp = new MutationObserver(app.init.bind(app));
 observerApp.observe(document.documentElement, {
     childList: true,
     subtree: true

@@ -1,14 +1,14 @@
 {
     "responseAnswers": [
         {
-            "statusErrorRecommendation": "To try again, reload the page"
+            "statusErrorRecommendation": "❗ Something went wrong, please try again later. ❗"
         }
     ],
     "buttonText": [
         {
-            "Main": "Show ID",
+            "Main": "✍ Show ID",
             "Loading": "Loading...",
-            "Error": "Error, check console for more info."
+            "Error": "⛔ Error, check console."
         }
     ]
 }
