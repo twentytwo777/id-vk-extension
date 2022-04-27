@@ -14,7 +14,7 @@ class App {
         await import(chrome.runtime.getURL('assets/js/background/modules/colorDeterminant.js')).then(determinant => {
             const colorDeterminant = new determinant.colorDeterminant, style = getComputedStyle(document.body);
 
-            document.documentElement.style.cssText = `--darkBackground: ${style.backgroundColor}; --darkColor: ${style.color};`;
+            document.documentElement.style.cssText = `--vkIDBackground: ${style.backgroundColor}; --vkIDColor: ${style.color};`;
             colorDeterminant.isDark(style.backgroundColor) ? this.buttonID.classList.add('dark') : this.buttonID.classList.remove('dark');
         });
         

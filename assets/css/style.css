@@ -13,8 +13,8 @@
 }
 
 .buttonID.dark {
-    background: var(--darkBackground);
-    color: var(--darkColor);
+    background: var(--vkIDBackground);
+    color: var(--vkIDColor);
 }
 
 .buttonID.clicked {
