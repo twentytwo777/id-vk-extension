@@ -3,25 +3,27 @@ class App {
         this.init();
     };
 
-    async init() {
-        await this.Render();
-
-        this.buttonID = document.querySelector('.buttonID');
-        this.buttonID ? this.eventListeners() : false;
+    init() {
+        this.Render();
+        this.eventListeners();
     };
 
     async eventListeners() {
-        await import(chrome.runtime.getURL('assets/js/background/modules/colorDeterminant.js')).then(determinant => {
-            const colorDeterminant = new determinant.colorDeterminant, style = getComputedStyle(document.body);
+        const buttonID = document.querySelector('.buttonID');
 
-            document.documentElement.style.cssText = `--vkIDBackground: ${style.backgroundColor}; --vkIDColor: ${style.color};`;
-            colorDeterminant.isDark(style.backgroundColor) ? this.buttonID.classList.add('dark') : this.buttonID.classList.remove('dark');
-        });
-        
-        await import(chrome.runtime.getURL('assets/js/background/vk/vkUser.js')).then(vk => {
-            const vkUser = new vk.vkUser, id = location.pathname.replace(/[\\\/]/g, '');
-            this.buttonID.onclick = vkUser.requestID.bind(vkUser, id, this.buttonID); 
-        });
+        if (buttonID) {
+            await import(chrome.runtime.getURL('assets/js/background/modules/colorDeterminant.js')).then(determinant => {
+                const colorDeterminant = new determinant.colorDeterminant, style = getComputedStyle(document.body);
+    
+                document.documentElement.style.cssText = `--vkIDBackground: ${style.backgroundColor}; --vkIDColor: ${style.color};`;
+                colorDeterminant.isDark(style.backgroundColor) ? buttonID.classList.add('dark') : buttonID.classList.remove('dark');
+            });
+            
+            await import(chrome.runtime.getURL('assets/js/background/vk/vkUser.js')).then(vk => {
+                const vkUser = new vk.vkUser, id = location.pathname.replace(/[\\\/]/g, '');
+                buttonID.onclick = vkUser.requestID.bind(vkUser, id, buttonID); 
+            });
+        };
     };
 
     async Render() {
