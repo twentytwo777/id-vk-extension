@@ -19,9 +19,6 @@
         "48": "./assets/icons/icon48.png",
        "128": "./assets/icons/icon128.png" 
     },
-    "background": {
-        "page": "background.html"
-    },
     "web_accessible_resources": [
         "assets/js/background/modules/colorDeterminant.js",
         "assets/js/background/vk/vkUser.js",
