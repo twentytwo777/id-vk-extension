@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "VK-ID Extension",
     "description": "Shows the user ID of the social network VK.",
-    "version": "1.5",
+    "version": "1.6",
     "permissions": [],
     "content_scripts": [
         {
