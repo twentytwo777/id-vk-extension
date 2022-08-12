@@ -1,19 +1,17 @@
-import answer from "/answer.json" assert {type: "json"};
-
 class vkUser {
     async requestID(id, btn) {
-        btn.textContent = answer.buttonText[0].Loading;
+        btn.textContent = 'Loading...';
 
         return await fetch(`https://api.twentytwo777.fun/vk.id/?id=${id}`).then(data => data.json()).then(data => {
             btn.textContent = data.response[0]['id'];
             btn.classList.add('clicked');
         }).catch(err => {
-            btn.textContent = answer.buttonText[0].Error;
+            btn.textContent = '⛔ Error, check console.';
             btn.classList.add('clicked');
 
-            console.log(`${answer.responseAnswers[0].statusErrorRecommendation}\nReason: ${err.message}`);
+            console.log(`❗ Something went wrong, please try again later. ❗\nReason: ${err.message}`);
         });
     };
 };
 
-export {vkUser};
+export default vkUser;

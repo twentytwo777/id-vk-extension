@@ -17,4 +17,4 @@ class colorDeterminant {
     };
 };
 
-export {colorDeterminant};
+export default colorDeterminant;
