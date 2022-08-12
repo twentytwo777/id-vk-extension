@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "VK-ID Extension",
     "description": "Shows the user ID of the social network VK.",
-    "version": "1.5",
+    "version": "1.6",
     "permissions": [],
     "content_scripts": [
         {
@@ -21,7 +21,6 @@
     },
     "web_accessible_resources": [
         "assets/js/background/modules/colorDeterminant.js",
-        "assets/js/background/vk/vkUser.js",
-        "answer.json"
+        "assets/js/background/vk/vkUser.js"
     ]    
 }
